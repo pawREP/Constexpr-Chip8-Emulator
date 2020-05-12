@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(SOURCES 
    src/main.cpp
-   src/Chip8.h
+   src/chip8.h
    src/draw.h
    src/roms.h
 )
