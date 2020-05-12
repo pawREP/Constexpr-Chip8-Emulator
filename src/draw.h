@@ -1,15 +1,11 @@
 #pragma once
 
-#include <fcntl.h>
-#include <io.h>
 #include <iostream>
 #include <sstream>
 
 //This print function is only intended to display the result of the constexpr emulation, it's not suitable as a continuous draw function.
 template <typename Arr>
 inline void printDisplay(const Arr& display) noexcept {
-    _setmode(_fileno(stdout), _O_U16TEXT);
-
     const auto width = 64;
     const auto height = 32;
 
@@ -34,5 +30,5 @@ inline void printDisplay(const Arr& display) noexcept {
         ss << L"\x2550";
     ss << L"\x255D\n";
 
-    wprintf(L"%ws", ss.str().c_str());
+    std::wcout << ss.str().c_str();
 }

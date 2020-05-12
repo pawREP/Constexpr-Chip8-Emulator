@@ -4,6 +4,8 @@
 #include "draw.h"
 #include "roms.h"
 
+#include <clocale>
+
 template <const std::size_t N>
 constexpr auto runVM(const uint8_t (&rom)[N], size_t cycle_limit = 0) noexcept {
     CxChip8::Chip8 vm(rom, cycle_limit);
@@ -12,6 +14,8 @@ constexpr auto runVM(const uint8_t (&rom)[N], size_t cycle_limit = 0) noexcept {
 }
 
 int main() {
+    std::setlocale(LC_ALL, "en_US.UTF-8");
+
 #ifdef EXEC_CONSTEXPR
     constexpr auto display = runVM(roms::space_invaders, 500);
     printDisplay(display.data());
